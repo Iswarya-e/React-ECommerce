@@ -8,9 +8,9 @@ type StoreItemProps = {
     image: string,
     name: string,
     price: number,
-    details: string
+    description: string
 }
-export function StoreItem({id,image,price,details,name}: StoreItemProps) {
+export function StoreItem({id,image,price,description,name}: StoreItemProps) {
 //using context
 // const { getItemQuantity, increaseItemQuantity, decreaseItemQuantity, removeFromCart } = useShoppingCartContext();
    const dispatch = useAppDispatch();
@@ -35,7 +35,7 @@ export function StoreItem({id,image,price,details,name}: StoreItemProps) {
                     </Card.Title>
                 
                     <Card.Text>
-                        <span>{details}</span>
+                        <span>{description}</span>
                     </Card.Text>
                     
                 </Card.Body>

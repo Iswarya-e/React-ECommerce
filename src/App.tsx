@@ -12,7 +12,7 @@ import { ShoppingCart } from './components/ShoppingCart'
 import { store } from './redux/store'
 import { Provider } from 'react-redux'
 import { useAppSelector } from './hooks/hooks'
-
+import { SignupForm } from './components/FormikForm'
 function App() {
 
   // const [isOpen, setIsOpen] = useState(false);
@@ -76,10 +76,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}> </Route>
             <Route path="/store" element={<Store />}></Route>
-            <Route path="/about" element={<About />}>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/form" element={<SignupForm/>}></Route>
               {/* <Route path="/about/test" element={<About2 />}></Route>
               <Route path="/about/test1" element={<About1 />}></Route> */}
-            </Route>
             <Route path='*' element={<Navigate to="/" />}></Route>
 
           </Routes>

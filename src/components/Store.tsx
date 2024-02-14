@@ -1,9 +1,11 @@
 import { Col, Row } from 'react-bootstrap'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import axios from 'axios'
 import { Product } from '../redux/cartSlice';
 import { StoreItem } from './StoreItem';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
+import { addAllProducts } from '../redux/productSlice';
 type APIProductModel ={
     productId: number,
     productName: string,
@@ -12,13 +14,12 @@ type APIProductModel ={
     productImage: string
 }
 export function Store() {
-    const [storeData, setStoreData] = useState<Product[]>();
-
+    const dispatch = useAppDispatch();
+    const state = useAppSelector(store=>store.product);
     useEffect(()=>{
         async function fetchData() {
             const data = await axios<APIProductModel[]>('http://localhost:5058/api/Products');
             let storeItemsList : Product[]=[];
-
             data.data.map(item=> {
                 let product: Product = {
                     id: item.productId,
@@ -29,14 +30,13 @@ export function Store() {
                 }
                 storeItemsList.push(product);
             });
-            setStoreData(storeItemsList);
+            setTimeout(()=> dispatch(addAllProducts(storeItemsList)),2000);
         }
         fetchData()
     },[])
     return (<>
-       
         <Row md={2} xs={1} lg={3} className="g-3">
-            {storeData?.map(item=>{
+            {state.products?.map(item=>{
                 return <Col key={item.id}><StoreItem {...item}></StoreItem></Col>
             })}
         </Row>

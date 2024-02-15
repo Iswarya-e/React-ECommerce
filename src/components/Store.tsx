@@ -5,14 +5,8 @@ import axios from 'axios'
 import { Product } from '../redux/cartSlice';
 import { StoreItem } from './StoreItem';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
-import { addAllProducts } from '../redux/productSlice';
-type APIProductModel ={
-    productId: number,
-    productName: string,
-    productPrice: number,
-    productDetails: string,
-    productImage: string
-}
+import { APIProductModel, addAllProducts } from '../redux/productSlice';
+
 export function Store() {
     const dispatch = useAppDispatch();
     const state = useAppSelector(store=>store.product);
@@ -30,7 +24,7 @@ export function Store() {
                 }
                 storeItemsList.push(product);
             });
-            setTimeout(()=> dispatch(addAllProducts(storeItemsList)),2000);
+            dispatch(addAllProducts(storeItemsList));
         }
         fetchData()
     },[])

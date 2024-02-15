@@ -1,5 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+export type APIProductModel ={
+    productId: number,
+    productName: string,
+    productPrice: number,
+    productDetails: string,
+    productImage: string
+}
+
 export type Product = {
     id:number,
     name: string,
@@ -26,7 +34,7 @@ export const productSlice = createSlice({
             }
         },
         addAllProducts: (state: State, action: PayloadAction<Product[]>) => {
-           state.products = [...state.products, ...action.payload]
+           state.products = action.payload
         }
      }
 

@@ -9,10 +9,11 @@ import { NavBar } from './components/NavBar'
 import { ShoppingCartContext, CartItem } from './context/ShoppingCartContext'
 import { useState } from 'react'
 import { ShoppingCart } from './components/ShoppingCart'
-import { store } from './redux/store'
+import { persistor, store } from './redux/store'
 import { Provider } from 'react-redux'
 import { useAppSelector } from './hooks/hooks'
 import { SignupForm } from './components/FormikForm'
+import { PersistGate } from 'redux-persist/integration/react'
 function App() {
 
   // const [isOpen, setIsOpen] = useState(false);
@@ -69,6 +70,7 @@ function App() {
   let currentState;
   return (
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
       <div style={{ width: '100%', height: '100vh' }}>
         <Container>
           <NavBar />
@@ -85,7 +87,8 @@ function App() {
           </Routes>
           <ShoppingCart></ShoppingCart>
         </Container>
-      </div>
+        </div>
+      </PersistGate>
     </Provider>
 
 

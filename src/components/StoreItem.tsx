@@ -31,7 +31,7 @@ export function StoreItem({id,image,price,description,name}: StoreItemProps) {
                 <Card.Body className="d-flex flex-column">
                     <Card.Title>
                         <span>{name}</span>
-                        <span className="ms-2"> {formatCurrency(price)}</span>
+                        <span className="ms-2"> {formatCurrency(price) }</span>
                     </Card.Title>
                 
                     <Card.Text>

@@ -49,21 +49,26 @@ export const SignupForm = () => {
         productImage: ''
     },
     onSubmit: async values => {
-      var newProduct: APIProductModel = {
-        productId: state.products[state.products.length -1].id+ 1,
-        productName: values.productName,
-        productDetails: values.productDetails,
-        productImage: values.productImage,
-        productPrice: values.productPrice
-      }
-      await axios.post('http://localhost:5058/api/Products',newProduct,{
-        headers: {
-          'Content-Type': 'application/json'
+      try {
+        var newProduct: APIProductModel = {
+          productId: state.products.length> 0 ? state.products[state.products.length -1]?.id+ 1: 1,
+          productName: values.productName,
+          productDetails: values.productDetails,
+          productImage: values.productImage,
+          productPrice: values.productPrice
         }
+        console.log('Sending POST request...');
+        await axios.post('http://localhost:5058/api/Products', newProduct, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log('Product added successfully');
+      } catch (error) {
+          console.error('Error adding product', error);
       }
-    )
     }
-   });
+  });
 
    
  

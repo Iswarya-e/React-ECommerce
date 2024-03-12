@@ -28,3 +28,19 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+
+<!-- ###Docker Conf
+
+docker build -f DockerFile .  
+
+docker images
+
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+<none>       <none>    8069363f6a00   12 minutes ago   405MB
+
+docker login
+
+docker tag 8069363f6a00 iswarya15/ecommerce-react-app
+docker push iswarya15/ecommerce-react-app -->
+

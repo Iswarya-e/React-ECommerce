@@ -1,0 +1,19 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: react-ecommerce
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: react-ecommerce
+  template:
+    metadata:
+      labels:
+        app: react-ecommerce
+    spec:
+      containers:
+      - name: react-ecommerce-container
+        image: iswarya15/react-app-ecommerce:v5
+        ports:
+        - containerPort: 80
